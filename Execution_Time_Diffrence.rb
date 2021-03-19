@@ -1,18 +1,18 @@
-def my_min(arr)
-    arr.each_with_index do |ele1, i1|
-        minimum = true
-        arr.each_with_index do |ele2, i2|
-            next if i1 == i2
-            minimum = false if ele2 < ele1
+def my_min(arr) # quadratic
+    arr.each_with_index do |ele1, i1| #o(n)
+        minimum = true # o(1)
+        arr.each_with_index do |ele2, i2| #o(n)
+            next if i1 == i2 #o(1)
+            minimum = false if ele2 < ele1 #o(1)
         end
-        return ele1 if minimum
+        return ele1 if minimum #o(1)
     end
 end
 
 # list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 # p my_min(list)  # =>  -5
 
-def my_min_v2(arr)
+def my_min_v2(arr) # linear
     current_min = arr[0]
     (1...arr.length).each do |idx|
         current_min = arr[idx] if arr[idx] < current_min
@@ -25,13 +25,13 @@ end
 # Largest Contiguous Sub-sum
 
 def largest_contiguous_subsum(arr)
-    new_arr = []
-    arr.each_with_index do |ele1, idx1|
+    new_arr = [] #o(1)
+    arr.each_with_index do |ele1, idx1| #o(n)
 
-        arr.each_with_index do |ele2, idx2|
+        arr.each_with_index do |ele2, idx2| #o(n)
 
-            if idx1 <= idx2
-                new_arr << arr[idx1..idx2]
+            if idx1 <= idx2 # o(1)
+                new_arr << arr[idx1..idx2] #o(n^3)
             end
         end
 
